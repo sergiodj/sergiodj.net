@@ -1,0 +1,18 @@
+<section>
+<h1>Archive</h1>
+{% for y in (2010..2025) reversed %}
+  {% if site.collated_posts[y] %}
+    <h4>{{ y }}</h4>
+    <ul>
+      {% for m in (1..12) reversed %}
+        {% if site.collated_posts[y][m] %}
+        {% comment %}What I did below is a little hack to get the month name.{% endcomment %}
+        {% capture m_name %}01/{{ m }}/2000{% endcapture %}
+	<li><a href='{{ root_url }}/{{ y }}/{{ m }}/'>{{ m_name | date: "%B" }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    </li>
+  {% endif %}
+{% endfor %}
+</section>
